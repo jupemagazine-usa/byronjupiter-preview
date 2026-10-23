@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luminate Pre-Release Upload | Byron Jupiter</title>
+<meta name="description" content="The pre-release upload form: track list, cover artwork, and confirmed release details, generating a Luminate / SoundScan pre-release export on the device — nothing is uploaded.">
+<link rel="canonical" href="https://byronjupiter.com/luminate-upload.html">
+<meta property="og:title" content="Luminate Pre-Release Upload | Byron Jupiter">
+<meta property="og:description" content="The pre-release upload form: track list, cover artwork, and confirmed release details, generating a Luminate / SoundScan pre-release export on the device — nothing is uploaded.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://byronjupiter.com/luminate-upload.html">
+<meta property="og:site_name" content="Byron Jupiter">
+<meta property="og:image" content="https://byronjupiter.com/assets/byron-jupiter-producer-portrait.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luminate Pre-Release Upload | Byron Jupiter">
+<meta name="twitter:description" content="The pre-release upload form: track list, cover artwork, and confirmed release details, generating a Luminate / SoundScan pre-release export on the device — nothing is uploaded.">
+<meta name="twitter:image" content="https://byronjupiter.com/assets/byron-jupiter-producer-portrait.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://byronjupiter.com/luminate-upload.html",
+      "@type": "WebPage",
+      "about": {
+        "@id": "https://byronjupiter.com/#byron-jupiter"
+      },
+      "isPartOf": {
+        "@id": "https://byronjupiter.com/#website"
+      },
+      "name": "Luminate Pre-Release Upload — Byron Jupiter",
+      "url": "https://byronjupiter.com/luminate-upload.html"
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --field:#050814; --ink:#050814; --cream:#f0ebde; --paper:#f0ebde; --gold:#c79e4d;
+    --gold-bright:#D4AF6A; --gold-hi:#f5a524; --gold-deep:#7a5a1d; --line:#ddd3bd; --max:68rem;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:1.125rem; line-height:1.65;
+  }
+  a{color:var(--ink); text-decoration-color:var(--gold-bright); text-underline-offset:3px}
+  a:hover{color:var(--gold)}
+  a:focus-visible, button:focus-visible, input:focus-visible, label.upload:focus-within{
+    outline:3px solid var(--gold-bright); outline-offset:3px;
+  }
+  .skip{position:absolute; left:-999px; top:0; background:var(--ink); color:var(--cream); padding:.5rem 1rem}
+  .skip:focus{left:0}
+
+  .masthead{background:var(--ink); color:var(--cream); position:sticky; top:0; z-index:10}
+  .masthead-in{max-width:var(--max); margin:0 auto; padding:.6rem clamp(1rem,4vw,2rem);
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
+  .wordmark{font-size:1rem; letter-spacing:.35em; text-transform:uppercase}
+  .wordmark strong{color:var(--gold-bright); font-weight:400}
+  nav .nav-list{list-style:none; display:flex; gap:1.25rem; margin:0; padding:0; flex-wrap:wrap}
+  nav .nav-list a{color:var(--cream); text-decoration:none; font-size:.95rem; letter-spacing:.08em}
+  nav .nav-list a:hover{color:var(--gold-bright)}
+
+  main{max-width:var(--max); margin:0 auto; padding:0 clamp(1rem,4vw,2rem) 4rem}
+  .hero{padding:clamp(2.5rem,8vw,5rem) 0 2rem; border-bottom:1px solid var(--line)}
+  .hero h1{
+    font-family:'Playfair Display',Georgia,serif; font-weight:700;
+    font-size:clamp(2.6rem,9vw,6rem); line-height:.95; margin:0 0 1rem; letter-spacing:-.01em;
+  }
+  .hero .roles{font-size:clamp(1rem,2.5vw,1.35rem); letter-spacing:.28em; text-transform:uppercase; color:var(--gold)}
+  .summary{font-size:clamp(1.2rem,3vw,1.6rem); line-height:1.5; max-width:42rem; margin:2rem 0 0}
+
+  section{padding:clamp(2.5rem,6vw,4rem) 0; border-bottom:1px solid var(--line)}
+  .sec-head{display:flex; align-items:baseline; gap:1.25rem; margin-bottom:1.5rem}
+  .sec-num{font-size:clamp(2rem,5vw,3.25rem); color:var(--gold-bright); font-family:'Playfair Display',Georgia,serif}
+  .sec-head h2{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.8rem,4.5vw,3rem); margin:0; line-height:1.05}
+  section p{max-width:44rem}
+
+  .upload{
+    display:block; max-width:44rem; cursor:pointer; text-align:center;
+    border:2px dashed var(--gold); padding:2.25rem 1rem; background:#fffdf6;
+  }
+  .upload:hover{border-color:var(--gold-bright)}
+  .upload .cta{letter-spacing:.3em; text-transform:uppercase; color:var(--gold); font-size:1rem}
+  .upload .fname{display:block; margin-top:.75rem; font-size:1rem; word-break:break-all}
+  .upload input{position:absolute; left:-9999px; width:1px; height:1px; opacity:0}
+
+  .fields{max-width:44rem; display:grid; gap:1.1rem}
+  .field label{
+    display:block; font-size:.85rem; letter-spacing:.25em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:.35rem;
+  }
+  .field input{
+    width:100%; padding:.7rem .8rem; font:inherit; color:var(--ink);
+    background:#fffdf6; border:1px solid var(--line); border-radius:2px;
+  }
+
+  .generate{
+    margin-top:2.5rem; max-width:44rem;
+  }
+  .generate button{
+    width:100%; padding:1.1rem 1rem; font:inherit; cursor:pointer;
+    letter-spacing:.25em; text-transform:uppercase;
+    background:var(--ink); color:var(--cream); border:1px solid var(--ink);
+  }
+  .generate button:disabled{opacity:.35; cursor:not-allowed}
+  .generate button:not(:disabled):hover{background:var(--gold); border-color:var(--gold)}
+  .status{margin-top:1rem; font-size:1rem; max-width:44rem}
+  .note{font-size:.95rem; line-height:1.55; border-left:3px solid var(--gold-bright); padding-left:1rem; max-width:44rem}
+
+  footer{background:var(--ink); color:var(--cream); margin-top:0}
+  .footer-in{max-width:var(--max); margin:0 auto; padding:2.5rem clamp(1rem,4vw,2rem)}
+  footer a{color:var(--gold-bright)}
+  footer p{max-width:44rem}
+  .next-step{font-size:1.2rem}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important; animation:none !important}
+  }
+
+  /* Flagship raise, 2026-10-23: the flagship palette (field #050814, golds
+     #D4AF6A / #c79e4d / #f5a524, cream #f0ebde), a deep-field stage band,
+     and dimensional dress - layered shadows, lit faces, beveled edges. */
+  ::selection{background:var(--gold-bright); color:var(--field)}
+  .masthead{
+    background:linear-gradient(180deg, #0a1128 0%, var(--field) 72%);
+    border-bottom:2px solid var(--gold);
+    box-shadow:0 10px 30px rgba(5,8,20,.35);
+  }
+  .hero{
+    width:100vw; margin-left:calc(50% - 50vw);
+    padding:clamp(2.75rem,8vw,4.5rem) max(clamp(1rem,4vw,2rem), calc(50vw - 34rem));
+    color:var(--cream); border-bottom:3px solid var(--gold-deep);
+    background:
+      radial-gradient(60rem 30rem at 78% -10%, rgba(212,175,106,.22), transparent 60%),
+      radial-gradient(50rem 26rem at 8% 115%, rgba(199,158,77,.14), transparent 60%),
+      linear-gradient(180deg, #0a1128 0%, var(--field) 100%);
+    box-shadow:inset 0 -30px 60px rgba(0,0,0,.35);
+  }
+  .hero h1{color:var(--cream); text-shadow:0 1px 0 rgba(212,175,106,.35), 0 3px 0 rgba(0,0,0,.55), 0 12px 34px rgba(0,0,0,.7)}
+  .hero .roles{color:var(--gold-bright)}
+  .hero .summary{color:var(--cream); text-shadow:0 1px 18px rgba(0,0,0,.6)}
+  .hero a{color:var(--gold-bright)}
+  .sec-head h2{text-shadow:0 1px 0 rgba(255,255,255,.45), 0 3px 7px rgba(5,8,20,.14)}
+  .card, .book{
+    background:linear-gradient(180deg, #fffdf6 0%, var(--cream) 62%, #e7dfc9 100%);
+    border:1px solid var(--line); border-top:3px solid var(--gold);
+    padding:1.25rem 1.25rem 1rem;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.65), 0 14px 34px rgba(5,8,20,.16), 0 3px 8px rgba(5,8,20,.10);
+  }
+  footer{
+    background:linear-gradient(180deg, var(--field) 0%, #03040a 100%);
+    border-top:2px solid var(--gold);
+    box-shadow:0 -12px 34px rgba(5,8,20,.25);
+  }
+  figure.player video, figure.player iframe, figure.player object{
+    border:1px solid var(--gold-deep);
+    box-shadow:0 18px 40px rgba(5,8,20,.28), 0 4px 10px rgba(5,8,20,.18);
+  }
+  figure.player img, figure.plate img{
+    border-color:var(--gold-deep);
+    box-shadow:0 16px 36px rgba(5,8,20,.24), 0 3px 8px rgba(5,8,20,.14);
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the form</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="wordmark">Byron <strong>Jupiter</strong> · Official</div>
+    <nav aria-label="Site"><ul class="nav-list"><li><a href="index.html">Home</a></li><li><a href="investor.html">Investor</a></li><li><a href="box-studios.html">The Box Studios</a></li><li><a href="bio.html">Bio</a></li><li><a href="photography.html">Photography</a></li><li><a href="terminal.html">Terminal</a></li><li><a href="credits.html">Credits</a></li><li><a href="weather.html">Weather</a></li><li><a href="news.html">News</a></li><li><a href="jupiter-muses.html">Jupiter & Muses</a></li><li><a href="cohort.html">Founding Cohort</a></li><li><a href="5d-8k-collection.html">5D / 8K Collection</a></li><li><a href="jupe-network.html">JUPE Network</a></li><li><a href="terms.html">Terms</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="accessibility.html">Accessibility</a></li><li><a href="luminate-upload.html">Luminate Upload</a></li><li><a href="budget-simulator.html">Budget Simulator</a></li><li><a href="news-the-welcome.html">The Welcome — St. David Catholic Church, October 4, 2026 | Byron Jupiter</a></li></ul></nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero">
+    <h1>Luminate Upload</h1>
+    <p class="roles">Pre-Release Pipeline · Studio A · Notown Records</p>
+    <p class="summary">One form, the whole pre-release pipeline: supply the track list and the cover artwork, confirm the release details, and the form generates the Luminate export here, on this device.</p>
+  </div>
+
+  <form id="luminate-form" novalidate>
+    <section id="track-list" aria-labelledby="h-track-list">
+      <div class="sec-head"><span class="sec-num">01</span><h2 id="h-track-list">Track List</h2></div>
+      <p>CSV or XLSX with columns: Title, ISRC, Duration, Songwriters.</p>
+      <label class="upload" for="track-file">
+        <span class="cta">Click to Upload</span>
+        <span class="fname" id="track-file-name">No file chosen</span>
+        <input type="file" id="track-file" name="track_file" accept=".csv,.xlsx">
+      </label>
+    </section>
+
+    <section id="cover-art" aria-labelledby="h-cover-art">
+      <div class="sec-head"><span class="sec-num">02</span><h2 id="h-cover-art">Cover Artwork</h2></div>
+      <p>JPG or PNG. Square 3000×3000 recommended.</p>
+      <label class="upload" for="cover-file">
+        <span class="cta">Click to Upload</span>
+        <span class="fname" id="cover-file-name">No file chosen</span>
+        <input type="file" id="cover-file" name="cover_file" accept=".jpg,.jpeg,.png">
+      </label>
+      <p class="status" id="cover-status" role="status"></p>
+    </section>
+
+    <section id="release-details" aria-labelledby="h-release-details">
+      <div class="sec-head"><span class="sec-num">03</span><h2 id="h-release-details">Confirm Release Details</h2></div>
+      <div class="fields">
+        <div class="field">
+          <label for="f-release-title">Release Title</label>
+          <input type="text" id="f-release-title" name="release_title" value="Half of the Worst">
+        </div>
+        <div class="field">
+          <label for="f-primary-artist">Primary Artist</label>
+          <input type="text" id="f-primary-artist" name="primary_artist" value="Aaniyah Anderson">
+        </div>
+        <div class="field">
+          <label for="f-label">Label</label>
+          <input type="text" id="f-label" name="label" value="Notown Records">
+        </div>
+        <div class="field">
+          <label for="f-imprint">Imprint</label>
+          <input type="text" id="f-imprint" name="imprint" value="Voice$ of Tomorrow">
+        </div>
+        <div class="field">
+          <label for="f-upc">UPC / EAN</label>
+          <input type="text" id="f-upc" name="upc_ean" value="8-58765-43210-9">
+        </div>
+        <div class="field">
+          <label for="f-iswc">ISWC</label>
+          <input type="text" id="f-iswc" name="iswc" value="T-345.678.901-2">
+        </div>
+        <div class="field">
+          <label for="f-catalog">Catalog #</label>
+          <input type="text" id="f-catalog" name="catalog" value="NTW-2025-001">
+        </div>
+        <div class="field">
+          <label for="f-release-date">Release Date</label>
+          <input type="date" id="f-release-date" name="release_date" value="">
+        </div>
+        <div class="field">
+          <label for="f-genre">Primary Genre</label>
+          <input type="text" id="f-genre" name="primary_genre" value="R&B / Soul">
+        </div>
+        <div class="field">
+          <label for="f-language">Language</label>
+          <input type="text" id="f-language" name="language" value="English">
+        </div>
+      </div>
+
+      <div class="generate">
+        <button type="submit" id="generate-btn" disabled>Generate Luminate Export</button>
+        <p class="status" id="form-status" role="status"></p>
+      </div>
+    </section>
+  </form>
+
+  <section id="how-it-works" aria-labelledby="h-how">
+    <div class="sec-head"><span class="sec-num">04</span><h2 id="h-how">How This Form Works</h2></div>
+    <p class="note">This form runs on this page. The two files are read in the browser, and the export is generated on this device and downloaded — no file and no field is uploaded to a server. Confirm every code and date before the export is used for a filing.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <p class="next-step">Next step: generate the export, then file it with the release record.</p>
+    <p>Pre-release pipeline — contact@byronjupiter.com</p>
+    <p>The official site of Byron Jupiter · New Orleans, Louisiana · © 2026 Byron Jupiter.</p>
+    <p><a href="#main">Back to the top</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var trackInput = document.getElementById('track-file');
+  var coverInput = document.getElementById('cover-file');
+  var trackName = document.getElementById('track-file-name');
+  var coverName = document.getElementById('cover-file-name');
+  var coverStatus = document.getElementById('cover-status');
+  var btn = document.getElementById('generate-btn');
+  var status = document.getElementById('form-status');
+  var coverDims = '';
+
+  function refresh() {
+    var t = trackInput.files && trackInput.files[0];
+    var c = coverInput.files && coverInput.files[0];
+    trackName.textContent = t ? t.name : 'No file chosen';
+    coverName.textContent = c ? c.name : 'No file chosen';
+    btn.disabled = !(t && c);
+  }
+
+  coverInput.addEventListener('change', function () {
+    coverDims = '';
+    coverStatus.textContent = '';
+    var c = coverInput.files && coverInput.files[0];
+    if (c && window.URL && window.Image) {
+      var url = URL.createObjectURL(c);
+      var img = new Image();
+      img.onload = function () {
+        coverDims = img.naturalWidth + 'x' + img.naturalHeight;
+        coverStatus.textContent = 'Cover art: ' + c.name + ' — ' + coverDims +
+          (img.naturalWidth === 3000 && img.naturalHeight === 3000
+            ? ' (square 3000x3000, as recommended).'
+            : ' (recommended: square 3000x3000).');
+        URL.revokeObjectURL(url);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); };
+      img.src = url;
+    }
+    refresh();
+  });
+  trackInput.addEventListener('change', refresh);
+
+  function parseCSV(text) {
+    var rows = [], row = [], field = '', inQ = false, i, ch;
+    text = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    for (i = 0; i < text.length; i++) {
+      ch = text.charAt(i);
+      if (inQ) {
+        if (ch === '"') {
+          if (text.charAt(i + 1) === '"') { field += '"'; i++; } else { inQ = false; }
+        } else { field += ch; }
+      } else if (ch === '"') { inQ = true; }
+      else if (ch === ',') { row.push(field); field = ''; }
+      else if (ch === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+      else { field += ch; }
+    }
+    if (field !== '' || row.length) { row.push(field); rows.push(row); }
+    return rows.filter(function (r) { return r.join('').trim() !== ''; });
+  }
+
+  function zipEntries(buf) {
+    var dv = new DataView(buf), n = buf.byteLength, i, eocd = -1;
+    for (i = n - 22; i >= 0 && i >= n - 66000; i--) {
+      if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+    }
+    if (eocd < 0) { return Promise.reject(new Error('not a zip')); }
+    var count = dv.getUint16(eocd + 10, true);
+    var off = dv.getUint32(eocd + 16, true);
+    var entries = [], p = off, k;
+    for (k = 0; k < count; k++) {
+      if (dv.getUint32(p, true) !== 0x02014b50) { break; }
+      var method = dv.getUint16(p + 10, true);
+      var csize = dv.getUint32(p + 20, true);
+      var nlen = dv.getUint16(p + 28, true);
+      var elen = dv.getUint16(p + 30, true);
+      var clen = dv.getUint16(p + 32, true);
+      var lho = dv.getUint32(p + 42, true);
+      var name = new TextDecoder().decode(new Uint8Array(buf, p + 46, nlen));
+      entries.push({ name: name, method: method, csize: csize, lho: lho });
+      p += 46 + nlen + elen + clen;
+    }
+    return Promise.resolve(entries.map(function (e) {
+      var lp = e.lho;
+      var lnlen = dv.getUint16(lp + 26, true);
+      var lelen = dv.getUint16(lp + 28, true);
+      var start = lp + 30 + lnlen + lelen;
+      e.data = new Uint8Array(buf, start, e.csize);
+      return e;
+    }));
+  }
+
+  function inflate(entry) {
+    if (entry.method === 0) { return Promise.resolve(entry.data); }
+    if (!window.DecompressionStream) {
+      return Promise.reject(new Error('no DecompressionStream'));
+    }
+    var ds = new DecompressionStream('deflate-raw');
+    var stream = new Blob([entry.data]).stream().pipeThrough(ds);
+    return new Response(stream).arrayBuffer().then(function (ab) {
+      return new Uint8Array(ab);
+    });
+  }
+
+  function entryText(entries, name) {
+    var e = null, i;
+    for (i = 0; i < entries.length; i++) {
+      if (entries[i].name === name) { e = entries[i]; break; }
+    }
+    if (!e) { return Promise.resolve(null); }
+    return inflate(e).then(function (bytes) {
+      return new TextDecoder().decode(bytes);
+    });
+  }
+
+  function parseXLSX(buf) {
+    return zipEntries(buf).then(function (entries) {
+      return entryText(entries, 'xl/sharedStrings.xml').then(function (ssXml) {
+        var shared = [];
+        if (ssXml) {
+          var doc = new DOMParser().parseFromString(ssXml, 'text/xml');
+          var sis = doc.getElementsByTagName('si'), i, j, ts, txt;
+          for (i = 0; i < sis.length; i++) {
+            ts = sis[i].getElementsByTagName('t'); txt = '';
+            for (j = 0; j < ts.length; j++) { txt += ts[j].textContent; }
+            shared.push(txt);
+          }
+        }
+        return entryText(entries, 'xl/worksheets/sheet1.xml').then(function (sheetXml) {
+          if (!sheetXml) { throw new Error('no sheet1'); }
+          var doc = new DOMParser().parseFromString(sheetXml, 'text/xml');
+          var rowEls = doc.getElementsByTagName('row');
+          var rows = [], i, j, cells, c, v, t, val;
+          for (i = 0; i < rowEls.length; i++) {
+            cells = rowEls[i].getElementsByTagName('c');
+            var row = [];
+            for (j = 0; j < cells.length; j++) {
+              c = cells[j]; t = c.getAttribute('t');
+              v = c.getElementsByTagName('v')[0];
+              if (t === 'inlineStr') {
+                var is = c.getElementsByTagName('t')[0];
+                val = is ? is.textContent : '';
+              } else if (v) {
+                val = v.textContent;
+                if (t === 's') { val = shared[parseInt(val, 10)] || ''; }
+              } else { val = ''; }
+              row.push(val);
+            }
+            rows.push(row);
+          }
+          return rows.filter(function (r) { return r.join('').trim() !== ''; });
+        });
+      });
+    });
+  }
+
+  function readTracks(file) {
+    var lower = file.name.toLowerCase();
+    if (lower.slice(-5) === '.xlsx') {
+      return file.arrayBuffer().then(parseXLSX).then(function (rows) {
+        return { rows: rows, note: '' };
+      }).catch(function () {
+        return { rows: [], note: 'Track list file "' + file.name + '" was attached but could not be parsed in this browser; its rows are not included in the export.' };
+      });
+    }
+    return file.text().then(function (text) {
+      return { rows: parseCSV(text), note: '' };
+    });
+  }
+
+  function val(id) { return document.getElementById(id).value || ''; }
+
+  document.getElementById('luminate-form').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var t = trackInput.files && trackInput.files[0];
+    var c = coverInput.files && coverInput.files[0];
+    if (!t || !c) { return; }
+    status.textContent = 'Generating the export…';
+    readTracks(t).then(function (res) {
+      var lines = [];
+      lines.push('LUMINATE / SOUNDSCAN PRE-RELEASE EXPORT');
+      lines.push('Generated on this device — no data was uploaded.');
+      lines.push('');
+      lines.push('RELEASE TITLE: ' + val('f-release-title'));
+      lines.push('PRIMARY ARTIST: ' + val('f-primary-artist'));
+      lines.push('LABEL: ' + val('f-label'));
+      lines.push('IMPRINT: ' + val('f-imprint'));
+      lines.push('UPC / EAN: ' + val('f-upc'));
+      lines.push('ISWC: ' + val('f-iswc'));
+      lines.push('CATALOG #: ' + val('f-catalog'));
+      lines.push('RELEASE DATE: ' + val('f-release-date'));
+      lines.push('PRIMARY GENRE: ' + val('f-genre'));
+      lines.push('LANGUAGE: ' + val('f-language'));
+      lines.push('');
+      lines.push('COVER ARTWORK: ' + c.name + (coverDims ? ' (' + coverDims + ')' : ''));
+      lines.push('TRACK LIST FILE: ' + t.name);
+      if (res.note) { lines.push('NOTE: ' + res.note); }
+      lines.push('');
+      lines.push('TRACKS (' + res.rows.length + ' rows, as supplied):');
+      res.rows.forEach(function (r, idx) {
+        lines.push((idx + 1) + '. ' + r.join(' | '));
+      });
+      var blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+      var a = document.createElement('a');
+      var cat = val('f-catalog').replace(/[^A-Za-z0-9-]+/g, '') || 'release';
+      a.href = URL.createObjectURL(blob);
+      a.download = 'luminate-export-' + cat + '.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      status.textContent = 'Export generated: ' + a.download + ' — ' + res.rows.length + ' track rows included.';
+    }).catch(function () {
+      status.textContent = 'The export could not be generated in this browser. Your files were not uploaded anywhere.';
+    });
+  });
+
+  refresh();
+})();
+</script>
+
+<!-- Rendered by the House Site Builder v1.0.0 - official record copy -->
+</body>
+</html>
