@@ -290,6 +290,35 @@
     border:1px solid var(--gold-deep); color:var(--gold-bright); font:inherit; font-size:.72rem;
     letter-spacing:.24em; text-transform:uppercase; padding:.55rem .95rem; cursor:pointer}
   html.focus-mode *, html.focus-mode *::before, html.focus-mode *::after{animation-play-state:paused !important}
+
+  /* NAVIGATION — colors + class (Byron's word, 2026-10-24): the wordmark row
+     rides first, the index button at its right, and the full nav takes one
+     tracked, uppercase, single row that scrolls sideways instead of wrapping
+     into a stack. Cream links, gold on approach, a hairline gold rule under
+     the bar. */
+  .masthead-in{flex-wrap:wrap; row-gap:.35rem}
+  .masthead .wordmark{color:var(--cream); letter-spacing:.38em}
+  .masthead nav{order:3; flex-basis:100%}
+  .masthead nav .nav-list{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
+    gap:1.6rem; padding:.35rem 0 .5rem; border-top:1px solid rgba(212,175,106,.28)}
+  .masthead nav .nav-list::-webkit-scrollbar{display:none}
+  .masthead nav .nav-list a{white-space:nowrap; text-transform:uppercase;
+    letter-spacing:.22em; font-size:.74rem; color:var(--cream);
+    padding-bottom:.2rem; border-bottom:2px solid transparent}
+  .masthead nav .nav-list a:hover{color:var(--gold-bright); border-bottom-color:var(--gold)}
+  .masthead .ai-btn{margin-left:auto}
+  .gold-band{background:linear-gradient(135deg,#c79e4d,#D4AF6A 45%,#f5a524); color:#050814;
+    padding:1.1rem clamp(1rem,4vw,3rem); display:flex; flex-wrap:wrap; gap:.8rem 1.6rem;
+    align-items:center; justify-content:space-between}
+  .gold-band .gb-line{font-family:'Playfair Display',Georgia,serif; font-size:clamp(1.05rem,2.4vw,1.5rem); letter-spacing:.02em}
+  .gold-band a{color:#050814; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    font-size:.78rem; text-decoration:none; border:2px solid #050814; padding:.5rem 1rem}
+  .gold-band a:hover{background:#050814; color:#D4AF6A}
+  .eras{display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:1.2rem; margin-top:1.4rem}
+  .era{border:1px solid var(--line); padding:1.1rem 1.2rem}
+  .era .num{color:var(--gold-deep); font-size:.78rem; letter-spacing:.3em}
+  .era h4{margin:.4rem 0 .5rem; font-family:'Playfair Display',Georgia,serif; font-size:1.25rem; color:var(--cream)}
+  .era p{margin:0; opacity:.85}
 </style>
 </head>
 <body>
@@ -309,6 +338,11 @@
     <h1>Byron Jupiter</h1>
     <p class="roles">The Box Studios · New Orleans</p>
     <p class="summary">Byron Jupiter of The Box Studios, New Orleans raised. This page is his official record: the person, the catalog, the film, the books, and the daily press.</p>
+  </div>
+
+  <div class="gold-band">
+    <span class="gb-line">I will do well by doing good.</span>
+    <a href="box-studios.html">The Box Studios →</a>
   </div>
 
   <section id="person" aria-labelledby="h-person">
@@ -415,8 +449,19 @@
     <p>A daily music publication, published at newmusic.press since October 12, 2026.</p>
   </section>
 
+  <section id="eras" aria-labelledby="h-eras">
+    <div class="sec-head"><span class="sec-num">06</span><h2 id="h-eras">The Evolution of Sound Technology</h2></div>
+    <p>A field guide to the tools that changed how music travels — from captured air and magnetic tape to the dimensional listening rooms still being invented.</p>
+    <div class="eras">
+      <div class="era"><span class="num">01</span><h4>Acoustic</h4><p>Sound becomes recordable — horn diaphragms to wax cylinders.</p></div>
+      <div class="era"><span class="num">02</span><h4>Electric</h4><p>Signal meets circuitry — microphones, amplifiers, tape, multitrack.</p></div>
+      <div class="era"><span class="num">03</span><h4>Digital</h4><p>The studio expands — sampling, MIDI, digital workstations.</p></div>
+      <div class="era"><span class="num">04</span><h4>Immersive</h4><p>Listening gains dimension — spatial audio, restoration, high-resolution capture.</p></div>
+    </div>
+  </section>
+
   <section id="partnership" aria-labelledby="h-partnership">
-    <div class="sec-head"><span class="sec-num">06</span><h2 id="h-partnership">The Partnership</h2></div>
+    <div class="sec-head"><span class="sec-num">07</span><h2 id="h-partnership">The Partnership</h2></div>
     <p>The studio-to-catalog model is offered to operators as a franchise, set out in the franchise brief. Public copy describes it; figures move only through the disclosure process.</p>
     <p class="legal">Proposed terms, subject to change. This is not an offer to sell a franchise. Where required, offers are made only through a franchise disclosure document.</p>
   </section>
