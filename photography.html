@@ -208,6 +208,38 @@
   </div>
 </footer>
 
+
+<style>
+.doc-trav{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;display:none;align-items:center;gap:.9rem;background:rgba(5,8,20,.92);border:1px solid rgba(212,175,106,.45);border-radius:999px;padding:.42rem 1rem;color:#f0ebde;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;backdrop-filter:blur(6px)}
+.doc-trav.on{display:flex}
+.doc-trav a{color:#D4AF6A;text-decoration:none;white-space:nowrap}
+.doc-trav a:hover{text-decoration:underline}
+.doc-trav .pos{color:#f0ebde;white-space:nowrap}
+.doc-trav .nm{color:#b8ad8f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:34vw}
+@media (max-width:640px){.doc-trav .nm{display:none}}
+</style>
+<nav class="doc-trav" id="docTrav" aria-label="Document traversal">
+  <a id="dtPrev" href="#">&larr; Prev</a>
+  <span class="pos" id="dtPos"></span>
+  <span class="nm" id="dtName"></span>
+  <a id="dtNext" href="#">Next &rarr;</a>
+</nav>
+<script>
+(function(){
+  var ORDER=[["index.html","Home"],["investor.html","Investor"],["box-studios.html","The Box Studios"],["bio.html","Bio"],["photography.html","Photography"],["terminal.html","Terminal"],["credits.html","Credits"],["weather.html","Weather"],["news.html","News"],["jupiter-muses.html","Jupiter & Muses"],["cohort.html","Founding Cohort"],["5d-8k-collection.html","5D / 8K Collection"],["jupe-network.html","JUPE Network"],["terms.html","Terms"],["privacy.html","Privacy"],["disclaimer.html","Disclaimer"],["accessibility.html","Accessibility"],["luminate-upload.html","Luminate Upload"],["budget-simulator.html","Budget Simulator"],["news-the-welcome.html","The Welcome"]];
+  var path=location.pathname.split("/").pop()||"index.html";
+  if(path==="")path="index.html";
+  var i=-1; for(var k=0;k<ORDER.length;k++){ if(ORDER[k][0]===path){ i=k; break; } }
+  if(i<0) return;
+  var bar=document.getElementById("docTrav");
+  document.getElementById("dtPos").textContent=(i+1)+" / "+ORDER.length;
+  document.getElementById("dtName").textContent=ORDER[i][1];
+  var prev=document.getElementById("dtPrev"), next=document.getElementById("dtNext");
+  if(i===0){ prev.style.visibility="hidden"; } else { prev.href=ORDER[i-1][0]; }
+  if(i===ORDER.length-1){ next.style.visibility="hidden"; } else { next.href=ORDER[i+1][0]; }
+  bar.classList.add("on");
+})();
+</script>
 <!-- Rendered by the House Site Builder v1.0.0 - official record copy -->
 </body>
 </html>
