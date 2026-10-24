@@ -235,6 +235,44 @@
     <div class="qa"><h3>Do I need music-industry experience?</h3><p>No, but you'll need a General Manager with hospitality or venue operations experience. Music-side programming can be handled through the JUPE booking pipeline.</p></div>
   </section>
 
+  <section id="wordmark" aria-labelledby="h-wordmark">
+    <div class="sec-head"><span class="sec-num">&nbsp;</span><h2 id="h-wordmark">JUPE, Letter by Letter</h2></div>
+    <p>Four letters, four pillars. Touch a letter.</p>
+    <style>
+      .wm-letters{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.2rem 0 .8rem}
+      .wm-letters button{font-family:'Jupiter Deco',serif;font-size:clamp(2.6rem,8vw,4.6rem);line-height:1;background:none;border:1px solid rgba(212,175,106,.4);color:var(--gold-bright,#f5a524);padding:.4rem 1.1rem;cursor:pointer;border-radius:6px}
+      .wm-letters button[aria-pressed="true"]{background:rgba(212,175,106,.14);border-color:var(--gold,#D4AF6A)}
+      .wm-panel{border-left:3px solid var(--gold,#D4AF6A);padding:.4rem 0 .4rem 1rem;min-height:3.4rem}
+      .wm-panel .wm-name{font-family:'Jupiter Deco',serif;text-transform:uppercase;letter-spacing:.06em;font-size:1.3rem}
+      .wm-panel .wm-line{color:var(--ink)}
+      .wm-stat{color:var(--gold-ink,#7f641c);letter-spacing:.18em;text-transform:uppercase;font-size:.8rem}
+    </style>
+    <div class="wm-letters" role="group" aria-label="The four pillars of JUPE">
+      <button type="button" data-wm="j" aria-pressed="true">J</button>
+      <button type="button" data-wm="u" aria-pressed="false">u</button>
+      <button type="button" data-wm="p" aria-pressed="false">P</button>
+      <button type="button" data-wm="e" aria-pressed="false">e</button>
+    </div>
+    <div class="wm-panel" aria-live="polite">
+      <span class="wm-name" id="wmName">Journal</span><br>
+      <span class="wm-line" id="wmLine">Editorial & Ad Revenue</span>
+    </div>
+    <p class="wm-stat">4 pillars</p>
+    <script>
+    (function(){
+      var DATA={j:["Journal","Editorial & Ad Revenue"],u:["Universal","Sync & Licensing"],p:["Product","Merchandise & Brand Goods"],e:["Enterprise","Partnerships & Sponsorship"]};
+      var btns=document.querySelectorAll(".wm-letters button");
+      btns.forEach(function(b){ b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+        b.setAttribute("aria-pressed","true");
+        var d=DATA[b.getAttribute("data-wm")];
+        document.getElementById("wmName").textContent=d[0];
+        document.getElementById("wmLine").textContent=d[1];
+      }); });
+    })();
+    </script>
+  </section>
+
   <section id="interest" aria-labelledby="h-interest">
     <div class="sec-head"><span class="sec-num">07</span><h2 id="h-interest">Tell us where you're headed</h2></div>
     <p class="legal">5-minute form. No obligation. Nothing on this page is an offer to sell a franchise — we'll deliver an FDD if and when we get to term sheet.</p>
@@ -279,6 +317,7 @@
     <p>Nothing on this page is an offer to sell a franchise. Offers are made only via FDD. · <a href="terms.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a></p>
     <p>Contact — contact@byronjupiter.com<br></p>
     <p>The official site of Byron Jupiter · New Orleans, Louisiana · © 2026 Byron Jupiter.</p>
+    <p>No part of this site may be used to train artificial intelligence systems.</p>
     <p><a href="#main">Back to the top</a></p>
   </div>
 </footer>
